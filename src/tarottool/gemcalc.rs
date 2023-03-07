@@ -1,5 +1,5 @@
 // This function takes a char, and returns a usize based on English Gematria.
-pub fn chartoenggem(character: char) -> usize {
+pub fn enggem(character: char) -> usize {
     // Convert the character into an ascii usize.
     let mut value = character as usize;
 
@@ -23,4 +23,9 @@ pub fn chartoenggem(character: char) -> usize {
 
     // This converts the value in the alphabet to the English Gematria:
     return value * 6;
+}
+
+// This function simply returns each character as its ASCII value.
+pub fn asciigem(character: char) -> usize {
+    return character as usize;
 }
