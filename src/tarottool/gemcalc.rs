@@ -29,3 +29,17 @@ pub fn enggem(character: char) -> usize {
 pub fn asciigem(character: char) -> usize {
     return character as usize;
 }
+
+// This function returns each character as it's value in the alphabet.
+// It operates the same as enggem() - but minus the multiply-value-by-6 bit.
+pub fn ordgem(character: char) -> usize {
+    let mut value = character as usize;
+    if value >= 65 && value <= 90 {
+        value = value - 64;
+    } else if value >= 97 && value <= 122 {
+        value = value - 96;
+    } else {
+        return 0;
+    }
+    return value;
+}
