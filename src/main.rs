@@ -8,7 +8,7 @@ use crate::argparse::helpprint;
 use std::env;
 
 // Used as the number of arguments.
-const NUMBER_OF_OPTIONS: usize = 1;
+const NUMBER_OF_OPTIONS: usize = 2;
 
 fn main() {
     // Initializing the program:
@@ -36,9 +36,11 @@ fn main() {
     let mut arguments: Vec<String> = vec![String::from("0"); env::args().len()];
     // And a vector for the resulting values of our arguments; called "options".
     let mut options: Vec<usize> = vec![0; NUMBER_OF_OPTIONS];
+    options[1] = 3;
     /*
      * GUIDE:
      *   Value 0 - Gematria (Should be 0, 1, or 2.)
+     *   Value 1 - Amount of cards drawn (Should be above 0.)
      */
 
     // Now we finally fill the arguments vector.
@@ -49,7 +51,7 @@ fn main() {
             .to_string();
     }
 
-    // Wi2th that being done, we can now run the in-effect macro to take the arguments,
+    // With that being done, we can now run the in-effect macro to take the arguments,
     // and write them to our options:
     let querynum: usize = argumentparser(arguments, &mut options);
     // The function also returns the number that is the argument in which the query
@@ -73,4 +75,6 @@ fn main() {
         2 => println!("Ordinal"),
         _ => panic!("What in the goddamn?"),
     };
+
+    println!("NUMBER OF CARDS: {}", options[1]);
 }
