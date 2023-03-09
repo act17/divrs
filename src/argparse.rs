@@ -32,6 +32,33 @@ pub fn argumentparser(arguments: Vec<String>, options: &mut Vec<usize>) -> usize
             }
         }
 
+        // All of the following blocks are simply just parsing arguments
+        // similar to -g; therefore, the code is copied and altered.
+
+        if arguments[i] == "-c" {
+            i += 1;
+            if i >= arguments.len() {
+                println!("Error! There's no following option for the '-c' flag!");
+                println!("Run the program with '-H' for help!");
+                return querynumber;
+            }
+            // We need to parse the string following -c into a usize.
+            let argumentnumber: usize = match arguments[i].trim().parse() {
+                Ok(num) => num,
+                Err(_) => break,
+            };
+            // Then we make sure that the number is valid:
+            if argumentnumber < 1 {
+                println!("Error! The entry following '-c' is not valid!");
+                println!("Run the program with '-H' for help!");
+            }
+            options[1] = argumentnumber;
+            i += 1;
+            if i >= arguments.len() {
+                return querynumber;
+            }
+        }
+
         // If we are printing the help message with -H...
         if arguments[i] == "-H" {
             helpprint();
@@ -53,4 +80,6 @@ pub fn helpprint() {
     println!("-H  -  Prints this message.");
     println!("-g  -  Changes the Gematria type used.");
     println!("0 = English (Default) | 1 = ASCII | 2 = Ordinal");
+    println!("-c  -  Changes the number of cards drawn.");
+    println!("Note: Value must be above 0.");
 }
