@@ -1,6 +1,6 @@
 # divrs
 A Rust/Improved Version of div.
-Current Version: 0.3.0 - March 7th, 2023
+Current Version: 0.4.0 - March 8th, 2023
 
 
 # Operation
@@ -11,6 +11,11 @@ Current Version: 0.3.0 - March 7th, 2023
   - Can take a character/string and output the Gematria value.
 
 # Changelog
+
+  *0.4.0 (March 8th, 2023)*
+  - Altered ``main.rs`` to account for the increase in potential arguments passed to the binary.
+  - Altered ``argparse()`` to now have a new flag - ``-c``.
+    - ``-c`` increases the amount of cards that will be stored. The amount passed must be more than 0.
 
   *0.3.0 (March 7th, 2023)*
   - Added a new file: ``./src/argparse.rs``.
